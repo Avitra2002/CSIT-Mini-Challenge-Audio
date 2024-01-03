@@ -8,7 +8,7 @@ import librosa
 import soundfile as sf
 
 # Load the audio file
-file_path = "/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_1/T1_audio.wav"
+file_path = "CSIT-Mini-Challenge-Audio/Task_1/T1_audio.wav" ## change directory
 audio, sr = librosa.load(file_path, sr=None)
 
 # Reverse the audio
@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 #plot 1
 # Load the audio file
-file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_a.wav'  # Replace with the path to your audio file
+file_path = 'CSIT-Mini-Challenge-Audio/Task_2/T2_audio_a.wav'  # Replace with the path to the audio file
 audio, sr = librosa.load(file_path, sr=None)
 
 # Create a spectrogram
@@ -48,7 +48,7 @@ plt.show()
 
 #plot 2
 # Load the audio file
-file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_b.wav'  # Replace with the path to your audio file
+file_path = 'CSIT-Mini-Challenge-Audio/Task_2/T2_audio_b.wav'  # Replace with the path to the audio file
 audio, sr = librosa.load(file_path, sr=None)
 
 # Create a spectrogram
@@ -61,7 +61,7 @@ plt.show()
 
 #plot 3
 # Load the audio file
-file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_c.wav'  # Replace with the path to your audio file
+file_path = 'CSIT-Mini-Challenge-Audio/Task_2/T2_audio_c.wav'  # Replace with the path to the audio file
 audio, sr = librosa.load(file_path, sr=None)
 
 # Create a spectrogram
@@ -74,7 +74,7 @@ plt.show()
 
 #plot 4
 # Load the audio file
-file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_d.wav'  # Replace with the path to your audio file
+file_path = 'CSIT-Mini-Challenge-Audio/Task_2/T2_audio_d.wav'  # Replace with the path to the audio file
 audio, sr = librosa.load(file_path, sr=None)
 
 # Create a spectrogram
@@ -100,7 +100,7 @@ from scipy.io import wavfile
 from scipy.signal import stft, istft
 
 # Load the audio file
-file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_3/C.Noisy_Voice.wav'
+file_path = 'CSIT-Mini-Challenge-Audio/Task_3/C.Noisy_Voice.wav'  # Replace with the path to the audio file
 sr, audio = wavfile.read(file_path)
 
 # Perform STFT
@@ -134,7 +134,7 @@ audio_amplified = np.clip(audio_amplified, -1, 1)
 audio_output = np.int16(audio_amplified * 32767)
 
 # Save the filtered and normalized audio
-output_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_3/Output.wav'
+output_path = file_path = 'CSIT-Mini-Challenge-Audio/Task_3/task3_Output.wav'  # Replace with the path to the audio file
 wavfile.write(output_path, sr, audio_output)
 
 ### Readme file for whisper: https://github.com/openai/whisper/blob/main/README.md
