@@ -33,7 +33,7 @@ import librosa
 import librosa.display
 import matplotlib.pyplot as plt
 import numpy as np
-
+#plot 1
 # Load the audio file
 file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_a.wav'  # Replace with the path to your audio file
 audio, sr = librosa.load(file_path, sr=None)
@@ -42,6 +42,45 @@ audio, sr = librosa.load(file_path, sr=None)
 plt.figure(figsize=(10, 4))
 librosa.display.specshow(librosa.amplitude_to_db(librosa.stft(audio), ref=np.max),
                          sr=sr, x_axis='time', y_axis='hz')
+plt.colorbar(format='%+2.0f dB')
+plt.title('Spectrogram')
+plt.show()
+
+#plot 2
+# Load the audio file
+file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_b.wav'  # Replace with the path to your audio file
+audio, sr = librosa.load(file_path, sr=None)
+
+# Create a spectrogram
+plt.figure(figsize=(10, 4))
+librosa.display.specshow(librosa.amplitude_to_db(librosa.stft(audio), ref=np.max),
+                         sr=sr, x_axis='time', y_axis='hz')
+plt.colorbar(format='%+2.0f dB')
+plt.title('Spectrogram')
+plt.show()
+
+#plot 3
+# Load the audio file
+file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_c.wav'  # Replace with the path to your audio file
+audio, sr = librosa.load(file_path, sr=None)
+
+# Create a spectrogram
+plt.figure(figsize=(10, 4))
+librosa.display.specshow(librosa.amplitude_to_db(librosa.stft(audio), ref=np.max),
+                         sr=sr, x_axis='time', y_axis='hz')
+plt.colorbar(format='%+2.0f dB')
+plt.title('Spectrogram')
+plt.show()
+
+#plot 4
+# Load the audio file
+file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_2/T2_audio_d.wav'  # Replace with the path to your audio file
+audio, sr = librosa.load(file_path, sr=None)
+
+# Create a spectrogram
+plt.figure(figsize=(20, 8))
+librosa.display.specshow(librosa.amplitude_to_db(librosa.stft(audio), ref=np.max),
+                         sr=sr, x_axis='time', y_axis='log')
 plt.colorbar(format='%+2.0f dB')
 plt.title('Spectrogram')
 plt.show()
