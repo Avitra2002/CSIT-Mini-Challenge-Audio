@@ -8,7 +8,7 @@ import librosa
 import soundfile as sf
 
 # Load the audio file
-file_path = "CSIT-Mini-Challenge-Audio/Task_1/T1_audio.wav" ## change directory
+file_path = "CSIT-Mini-Challenge-Audio/Task_1/T1_audio.wav"## Replace with the file directory with local path
 audio, sr = librosa.load(file_path, sr=None)
 
 # Reverse the audio
@@ -18,8 +18,8 @@ audio_reversed = audio[::-1]
 audio_stretched = librosa.effects.time_stretch(audio_reversed, rate=1.0)
 
 # Save the reversed (and possibly speed-adjusted) audio to a new file
-output_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_1/T1_output.wav'  # Replace with your desired output path
-sf.write(output_path, audio_stretched, sr)  # Replace `audio_reversed` with `audio_stretched` if using time stretch
+output_path = '/CSIT-Mini-Challenge-Audio/Task_1/T1_output.wav'  # Replace with your desired output path
+sf.write(output_path, audio_stretched, sr)
 ##<OUTPUT IN RESULT.MD>##
 
 
