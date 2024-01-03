@@ -51,6 +51,66 @@ plt.show()
 
 
 ###TASK 3###
+# Breaking it down:
+# 1) Perform STFT and filter to a audio data (100-2000 Hz)
+# 2) Increase the amplitude after cleaning and filtering
+# 3) The output might be in foreign language (I am assuming Turkish from "kökenlerivle ilgili"), and hence I need to translate it.
+
+import numpy as np
+from scipy.io import wavfile
+from scipy.signal import stft, istft
+
+# Load the audio file
+file_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_3/C.Noisy_Voice.wav'
+sr, audio = wavfile.read(file_path)
+
+# Perform STFT
+n_fft = 2048  # You might need to tweak this depending on your specific audio file
+hop_length = n_fft // 4
+frequencies, times, stft_matrix = stft(audio, fs=sr, nperseg=n_fft, noverlap=hop_length)
+
+# Define the frequency range for filtering (100 Hz to 2000 Hz)
+lowcut_idx = np.where(frequencies >= 100)[0][0]
+highcut_idx = np.where(frequencies <= 2000)[0][-1]
+
+# Apply bandpass filtering in the frequency domain
+stft_matrix[:lowcut_idx, :] = 0
+stft_matrix[highcut_idx + 1:, :] = 0
+
+# Perform the Inverse STFT
+_, audio_filtered = istft(stft_matrix, fs=sr, nperseg=n_fft, noverlap=hop_length)
+
+# Normalize the audio
+max_value = np.max(np.abs(audio_filtered))
+audio_normalized = audio_filtered / max_value
+
+# Apply gain amplification
+gain_factor = 8  # This can be adjusted, but be cautious to prevent clipping
+audio_amplified = audio_normalized * gain_factor
+
+# Ensure the amplified audio doesn't exceed [-1, 1] to prevent clipping
+audio_amplified = np.clip(audio_amplified, -1, 1)
+
+# Convert back to appropriate data type for WAV file
+audio_output = np.int16(audio_amplified * 32767)
+
+# Save the filtered and normalized audio
+output_path = '/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_3/Output.wav'
+wavfile.write(output_path, sr, audio_output)
+
+### Readme file for whisper: https://github.com/openai/whisper/blob/main/README.md
+
+##Translating
+import whisper
+model = whisper.load_model("large-v2")
+filepath= "/Users/phonavitra/Desktop/CSIT/CSIT_DS_Mini-Challenge/CSIT_DS_Mini-Challenge/Task_3/task3_Output.wav"
+audio = whisper.load_audio(filepath)
+audio = whisper.pad_or_trim(audio)
+
+result = model.transcribe(audio, language="en")
+print(result["text"])
+
+##<OUTPUT IN RESULT.MD>##
 
 
 
